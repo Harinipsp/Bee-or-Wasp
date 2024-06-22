@@ -8,10 +8,10 @@ import io
 import base64
 
 # Load models
-custom_model = load_model('/content/drive/MyDrive/bee2.h5')
-mobilenet_model = load_model('/content/drive/MyDrive/mobilenet_model.h5')
-vgg16_model = load_model('/content/drive/MyDrive/vgg16_model.h5')
-densenet_model = load_model('/content/drive/MyDrive/densenet_model.h5')
+custom_model = load_model('models/bee2.h5')
+mobilenet_model = load_model('models/mobilenet_model.h5')
+vgg16_model = load_model('models/vgg16_model.h5')
+densenet_model = load_model('models/densenet_model.h5')
 
 # Label map (same for all models)
 label_map = {0: 'bee', 1: 'wasp'}
