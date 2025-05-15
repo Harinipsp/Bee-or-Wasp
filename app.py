@@ -7,19 +7,17 @@ import matplotlib.pyplot as plt
 import io
 import base64
 
-# Load models
 custom_model = load_model('models/bee2.h5')
 mobilenet_model = load_model('models/mobilenet_model.h5')
 vgg16_model = load_model('models/vgg16_model.h5')
 densenet_model = load_model('models/densenet_model.h5')
 
-# Label map (same for all models)
 label_map = {0: 'bee', 1: 'wasp'}
 
 def preprocess_image(image, img_height, img_width):
     img = cv.resize(image, (img_height, img_width))
-    img = img / 255.0  # Normalize pixel values
-    img = np.expand_dims(img, axis=0)  # Add batch dimension
+    img = img / 255.0 
+    img = np.expand_dims(img, axis=0)  
     return img
 
 def predict_image_class(model, image, img_height, img_width):
@@ -52,7 +50,7 @@ if uploaded_file is not None:
     st.write(f"VGG16 Prediction: {vgg16_prediction} (Accuracy: {vgg16_accuracy:.2f})")
     st.write(f"DenseNet Prediction: {densenet_prediction} (Accuracy: {densenet_accuracy:.2f})")
 
-    # Accuracies for the graph
+
     accuracies = {
         'Custom Model': custom_accuracy,
         'MobileNet': mobilenet_accuracy,
@@ -60,13 +58,13 @@ if uploaded_file is not None:
         'DenseNet': densenet_accuracy
     }
 
-    # Plotting the comparison graph
+
     plt.figure(figsize=(10, 5))
     plt.bar(accuracies.keys(), accuracies.values())
     plt.ylabel('Accuracy')
     plt.title('Model Performance Comparison')
 
-    # Save the plot to a PNG image in memory
+ 
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
     buf.seek(0)
